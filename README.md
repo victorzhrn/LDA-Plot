@@ -12,6 +12,13 @@ The details of the app can be find [here](https://zhangruinan.shinyapps.io/LDA_p
 
 #### Functionality
 - Import File
+	* this feature allows users to upload their own dataset
+- Visualization choices
+	* this feature allows users to choose the objects plotted on the graph, including: all the observations, brands as centroids, questions/features
+- Unstack keywords
+	* this is a special features proposed by Smari Inc. due to its input data format. The app is able to unstack multiple response variables. The questions/features are identified by matching provided substrings. Please note the number of questions matched by multiple substrings has to be exactly same for the unstack process to work.
+- Information on Default dataset:
+	* Unfortuantely, the details on brands and questions from default dataset can not be revealed as it is provided by Smari Inc.
 
 
 
