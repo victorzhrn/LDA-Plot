@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\setlength{\parindent}{4em}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.5}
+
+\title{Applications of Pinciple Component Analysis and Linear Discriminant Analysis
+on Consulting Survey Data }
+\author{Ruinan(Victor) Zhang}
+\date{March 24, 2017}
+\begin{document}
+\maketitle{}
+\section{Abstract}
+This paper address two statistical techiniques to analyze surveying data
+and applications on how to visualize those data for business analytics.
+
+\section{Motivation}
+The project is inspired by company, Smari Inc. The challenge was to provide statistical evidence for consulting business decisions by visualizing collected survey data. One specific question is how to evaluate competitors' performance on specific features. For example, cellphone brands may interested to know what do the customers think of them in terms of design, user-friendness, system-smoothiness. The goal of this project is to build an open-source online app for consulting companies to upload their dataset and construct visulizations to help them to answer such consulting questions.
+
+\section{Statistics Concepts Involved}
+\subsection{Principal Component Analysis}
+
+Principal Component Analysis (PCA for the rest of the document) is a statistical technique to summarize features into algebraic combinations to capture the most correlation between the features and reponses. PCA is usually used to capture the most informations of provided features meanwhile reduce the number of features for modeling complexity.
+
+
+\noindent Suppose I want to do PCA on a set of random vectors $\vec{X}$s with size equals to $p$. PCA generates a coefficient matrix $E$ with size typically smaller than the length of $\vec{X}$ (otherwise, PCA loses its goal of dimentional reduction). Let $\Sigma $ denotes as variance-covariance matrix of $\vec{X}$. Then the eigenvalues of $\Sigma$: $\lambda_1$ through $\lambda_p$. These eigenvalues are ordered so that $\lambda_1$ is the largest eigenvalue and $\lambda_p$ is the smallest. Then we also calculate the eigenvectors of $\Sigma$: $ \vec{e_1}$ through $\vec{e_p}$. It turns out the elements for these eigenvectors are the coefficients of principle components. Let the $i$th principle component denotes as $ Y_i $, we can get variance of $Y_i$ as following: $$ var(Y_i) = var(e_{i1}X_1 + ... + e_{ip}X_p) = \lambda_i$$
+$\lambda_1$ being the biggest eigenvalue indicates that $Y_i$ captures the most variance. The proportion of variance caputured by $i$ th principle components can be calculated as $\lambda_i / \sum \lambda$. With the coefficients, the $i$th principal components can be easily calculated as following:
+$$ Y_i  = e_{i1}X_1 + ... + e_{ip}X_p$$
+
+\noindent In general, to visualize the PCA result on a 2-dimmension graph, the first two principle components are chosen as the $x$ and $y$ axis, and coordinates to represent $X_i$ can be found by solving the matrix $ Y = \vec{e}\times{X}$ with Y already known. Figure 1 is a good visualization of  summarizing 3-dimmensional data into 2 principle components:
+
+\begin{figure}
+\includegraphics[scale = 0.5]{3d_data_pca.jpg}
+\centering
+\caption{Summarize 3D data into 2 principle components}
+\end{figure}
+
+
+
+
+\subsection{Linear Discriminant Analysis}
+
+\section{Online App on ShinyIO}
+
+
+
+
+
+
+\end{document}
