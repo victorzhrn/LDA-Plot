@@ -1,6 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1490543937 "paper" "paper.pdf" "paper" 1490543938
+["pdflatex"] 1490736231 "paper" "paper.pdf" "paper" 1490736232
   "./3d_data_pca.jpg" 1490543267 71368 598f3165d1cadf7059471ca233f37b55 ""
+  "./pcavslda.png" 1490735924 221527 086722d5a6f09d5ce65f6a4dad347b3d ""
   "/usr/local/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -56,8 +57,9 @@
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1432479681 3849859 39a7d258195bde2394e244961601fbc5 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
   "3d_data_pca.jpg" 1490543267 71368 598f3165d1cadf7059471ca233f37b55 ""
-  "paper" 1490543937 3378 4b0ad1aaef2ef6174825923416862a76 ""
-  "paper.aux" 1490543938 793 3750432e36c54f62c94f42c5fcbce671 ""
+  "paper" 1490736231 4336 93741981e273a2b8ece56e5fa2777366 ""
+  "paper.aux" 1490736232 959 4d3bf31374e0925c4e212cfc35d70726 ""
+  "pcavslda.png" 1490735924 221527 086722d5a6f09d5ce65f6a4dad347b3d ""
   (generated)
   "paper.pdf"
   "paper.log"

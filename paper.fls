@@ -83,6 +83,9 @@ INPUT /usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT 3d_data_pca.jpg
 INPUT ./3d_data_pca.jpg
 INPUT ./3d_data_pca.jpg
+INPUT pcavslda.png
+INPUT ./pcavslda.png
+INPUT ./pcavslda.png
 INPUT paper.aux
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb

@@ -39,9 +39,20 @@ $$ Y_i  = e_{i1}X_1 + ... + e_{ip}X_p$$
 \end{figure}
 
 
-
-
 \subsection{Linear Discriminant Analysis}
+
+Linear discriminant analysis(LDA) is a method used in statistics to find a linear combination of features that characterizes or separates two or more classes of objects or event. The idea of LDA is to find a linear combination of variables to model the difference between the classes of a particular set of variable (usually categorical variables). LDA technique is frequently used as dimensionality reduction before classifications. LDA can be visualized similar to PCA as they both generate set of linear coefficients.
+
+\subsection{PCA vs. LDA}
+PCA and LDA are similar in the way they both generate linear combination of variables which best explains data. LDA explicitly attempts to model the difference between the classes of data while PCA models the similarities between the classes. Here is a good visulization on difference between PCA and LDA \\
+
+
+\begin{figure}
+\includegraphics[scale = 0.4]{pcavslda}
+\centering
+\caption{PCA vs. LDA}
+\end{figure}
+
 
 \section{Online App on ShinyIO}
 
