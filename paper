@@ -28,7 +28,7 @@ Principal Component Analysis (PCA for the rest of the document) is a statistical
 
 \noindent Suppose I want to do PCA on a set of random vectors $\vec{X}$s with size equals to $p$. PCA generates a coefficient matrix $E$ with size typically smaller than the length of $\vec{X}$ (otherwise, PCA loses its goal of dimentional reduction). Let $\Sigma $ denotes as variance-covariance matrix of $\vec{X}$. Then the eigenvalues of $\Sigma$: $\lambda_1$ through $\lambda_p$. These eigenvalues are ordered so that $\lambda_1$ is the largest eigenvalue and $\lambda_p$ is the smallest. Then we also calculate the eigenvectors of $\Sigma$: $ \vec{e_1}$ through $\vec{e_p}$. It turns out the elements for these eigenvectors are the coefficients of principle components. Let the $i$th principle component denotes as $ Y_i $, we can get variance of $Y_i$ as following: $$ var(Y_i) = var(e_{i1}X_1 + ... + e_{ip}X_p) = \lambda_i$$
 $\lambda_1$ being the biggest eigenvalue indicates that $Y_i$ captures the most variance. The proportion of variance caputured by $i$ th principle components can be calculated as $\lambda_i / \sum \lambda$. With the coefficients, the $i$th principal components can be easily calculated as following:
-$$ Y_i  = e_{i1}X_1 + ... + e_{ip}X_p$$
+$$ Y_i  = e_{i1}X_1 + ... + e_{ip}X_p$$  \cite{pen_state_pca}
 
 \noindent In general, to visualize the PCA result on a 2-dimmension graph, the first two principle components are chosen as the $x$ and $y$ axis, and coordinates to represent $X_i$ can be found by solving the matrix $ Y = \vec{e}\times{X}$ with Y already known. Figure 1 is a good visualization of  summarizing 3-dimmensional data into 2 principle components:
 
@@ -43,6 +43,9 @@ $$ Y_i  = e_{i1}X_1 + ... + e_{ip}X_p$$
 
 Linear discriminant analysis(LDA) is a method used in statistics to find a linear combination of features that characterizes or separates two or more classes of objects or event. The idea of LDA is to find a linear combination of variables to model the difference between the classes of a particular set of variable (usually categorical variables). LDA technique is frequently used as dimensionality reduction before classifications. LDA can be visualized similar to PCA as they both generate set of linear coefficients.
 
+\noindent The idea behind LDA is to find a classification criterion and use it to minimize total error of classification. To make an example, suppose there is a dataset with two groups and k correspondant features for each group. Let  $\mu_1$ and $\mu_2$ be the esponse variable mean of the first group and second group. You can start with some apriori probabilities of $p_1$ and $p_2$ to have this equation: $\mu_0 = p_1 \times \mu_1+p_2 \times \mu_2$. In LDA, within-class $(S_w)$ and $(S_b)$ scatter are used to formulate criteria for class seperation. Within-class scatter is the expected variance of each of the classes. $S_w = \sum_i (p_i+ \Sigma_i)$ where $\Sigma_i$ is the covariance matrix for $i$th group. The between-class scatter is computed using: $S_b = \sum_i(\mu_i-\mu_0) \times (\mu_j-\mu_0)^T$. Note that $S_b$ can be thought of as the covariance of data set whose members are the mean vectors of each class. For the class independent transform, the optimizing criterion $C$ is computed as $C = S_w^{-1} \times S_b$. Once $C$ is optimized, we can apply it as the transformation matrix and obtain the linear-discriminantly transformed data. \cite{lda_theory}
+
+
 \subsection{PCA vs. LDA}
 PCA and LDA are similar in the way they both generate linear combination of variables which best explains data. LDA explicitly attempts to model the difference between the classes of data while PCA models the similarities between the classes. Here is a good visulization on difference between PCA and LDA \\
 
@@ -50,11 +53,26 @@ PCA and LDA are similar in the way they both generate linear combination of vari
 \begin{figure}
 \includegraphics[scale = 0.4]{pcavslda}
 \centering
-\caption{PCA vs. LDA}
+\caption{PCA vs. LDA} \cite{SR_website}
 \end{figure}
 
 
 \section{Online App on ShinyIO}
+
+\begin{thebibliography}{9}
+
+\bibitem{pen_state_pca}
+\texttt{https://onlinecourses.science.psu.edu/stat505/node/49}
+
+\bibitem{lda_theory}
+S. Balakrishnama, A. Ganapathiraju. \textit{Linear Discriminant Analysis}
+\\\texttt{https://www.isip.piconepress.com/publications/reports/1998/isip/lda/lda\_theory.pdf}
+
+\bibitem{SR_website}
+Sebastian Raschka
+\\\texttt{http://sebastianraschka.com/Articles/2014\_python\_lda.html}
+
+\end{thebibliography}
 
 
 
