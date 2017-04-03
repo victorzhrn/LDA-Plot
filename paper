@@ -2,6 +2,7 @@
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
+\usepackage{hyperref}
 
 \setlength{\parindent}{4em}
 \setlength{\parskip}{1em}
@@ -47,17 +48,22 @@ Linear discriminant analysis(LDA) is a method used in statistics to find a linea
 
 
 \subsection{PCA vs. LDA}
-PCA and LDA are similar in the way they both generate linear combination of variables which best explains data. LDA explicitly attempts to model the difference between the classes of data while PCA models the similarities between the classes. Here is a good visulization on difference between PCA and LDA \\
-
-
+PCA and LDA are similar in the way they both generate linear combination of variables which best explains data. LDA explicitly attempts to model the difference between the classes of data while PCA models the similarities between the classes. Here is a good visulization on difference between PCA and LDA: \\
 \begin{figure}
 \includegraphics[scale = 0.4]{pcavslda}
 \centering
 \caption{PCA vs. LDA} \cite{SR_website}
 \end{figure}
 
-
 \section{Online App on ShinyIO}
+
+\subsection{Application Details}
+
+The online PCA and LDA visualization online applications can be find \href{https://zhangruinan.shinyapps.io/shinny_myggbiplot/}{\textit{here}} and \href{https://zhangruinan.shinyapps.io/LDA_plot/}{\textit{here}}.Descriptions on the application details including: functionality, default dataset, can be find \href{https://github.com/zhangruinan/Biplot_Analysis4Smari}{\textit{here}} and \href{https://github.com/zhangruinan/LDA-Plot}{\textit{here}}.
+
+\subsection{Implimentation Techniques}
+To give a very brief view of how Shinny IO works, the online application is run by two major R script: server.R and ui.R. THe ui.R provides customerized user interface widgets like checkboxs or text input. The input from user interface is then passed to server.R which handles the computation and generate output. The generated output can be then passed back to UI and displayed to users on the website.
+
 
 \begin{thebibliography}{9}
 
