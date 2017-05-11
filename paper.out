@@ -1,9 +1,8 @@
 \BOOKMARK [1][-]{section.1}{Abstract}{}% 1
 \BOOKMARK [1][-]{section.2}{Motivation}{}% 2
-\BOOKMARK [1][-]{section.3}{Statistics Concepts Involved}{}% 3
-\BOOKMARK [2][-]{subsection.3.1}{Principal Component Analysis}{section.3}% 4
-\BOOKMARK [2][-]{subsection.3.2}{Linear Discriminant Analysis}{section.3}% 5
-\BOOKMARK [2][-]{subsection.3.3}{PCA vs. LDA}{section.3}% 6
-\BOOKMARK [1][-]{section.4}{Online App on ShinyIO}{}% 7
-\BOOKMARK [2][-]{subsection.4.1}{Application Details}{section.4}% 8
-\BOOKMARK [2][-]{subsection.4.2}{Implimentation Techniques}{section.4}% 9
+\BOOKMARK [1][-]{section.3}{Overview and Interpretation on Visualization}{}% 3
+\BOOKMARK [1][-]{section.4}{Statistics Concepts Involved}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Linear Discriminant Analysis}{section.4}% 5
+\BOOKMARK [1][-]{section.5}{Online App on ShinyIO}{}% 6
+\BOOKMARK [2][-]{subsection.5.1}{Application Details}{section.5}% 7
+\BOOKMARK [2][-]{subsection.5.2}{Implimentation Techniques}{section.5}% 8

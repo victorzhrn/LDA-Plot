@@ -15,54 +15,88 @@ on Consulting Survey Data }
 \begin{document}
 \maketitle{}
 \section{Abstract}
-This paper address two statistical techiniques to analyze surveying data
-and applications on how to visualize those data for business analytics.
+This paper explains the concepts of a statistical techinique, linear discriminant analysis (LDA) and how it can be used on analyzing surveying data and visualization for business consulting. One situation that LDA can be extremely helpful is to compare and contrast customers' expectations and actual ratings on products. I will also explain how LDA works for visualization and process of implementing an online application using R language through ShinyIO.
 
 \section{Motivation}
 The project is inspired by company, Smari Inc. The challenge was to provide statistical evidence for consulting business decisions by visualizing collected survey data. One specific question is how to evaluate competitors' performance on specific features. For example, cellphone brands may interested to know what do the customers think of them in terms of design, user-friendness, system-smoothiness. The goal of this project is to build an open-source online app for consulting companies to upload their dataset and construct visulizations to help them to answer such consulting questions.
 
-\section{Statistics Concepts Involved}
-\subsection{Principal Component Analysis}
-
-Principal Component Analysis (PCA for the rest of the document) is a statistical technique to summarize features into algebraic combinations to capture the most correlation between the features and reponses. PCA is usually used to capture the most informations of provided features meanwhile reduce the number of features for modeling complexity.
+\noindent In the sample dataset provided by the company, the customers rated on some features on a brand of recorders and the importance level of these features on such product within in a range of 1 throught 7. In this specific case, the challenge is to extract information from these survery dataset and visualize the distance between the customers' expection and rating on the recorder.
 
 
-\noindent Suppose I want to do PCA on a set of random vectors $\vec{X}$s with size equals to $p$. PCA generates a coefficient matrix $E$ with size typically smaller than the length of $\vec{X}$ (otherwise, PCA loses its goal of dimentional reduction). Let $\Sigma $ denotes as variance-covariance matrix of $\vec{X}$. Then the eigenvalues of $\Sigma$: $\lambda_1$ through $\lambda_p$. These eigenvalues are ordered so that $\lambda_1$ is the largest eigenvalue and $\lambda_p$ is the smallest. Then we also calculate the eigenvectors of $\Sigma$: $ \vec{e_1}$ through $\vec{e_p}$. It turns out the elements for these eigenvectors are the coefficients of principle components. Let the $i$th principle component denotes as $ Y_i $, we can get variance of $Y_i$ as following: $$ var(Y_i) = var(e_{i1}X_1 + ... + e_{ip}X_p) = \lambda_i$$
-$\lambda_1$ being the biggest eigenvalue indicates that $Y_i$ captures the most variance. The proportion of variance caputured by $i$ th principle components can be calculated as $\lambda_i / \sum \lambda$. With the coefficients, the $i$th principal components can be easily calculated as following:
-$$ Y_i  = e_{i1}X_1 + ... + e_{ip}X_p$$  \cite{pen_state_pca}
+\section{Overview and Interpretation on Visualization}
+The statistical method linear discriminant analysis is first applied to the dataset to transform the dataset into a dimension where the discriminance between features are maximized, and then the datset is plotted on the new dimensions for visualization. Here is the generated LDA plot on the sample dataset:
 
-\noindent In general, to visualize the PCA result on a 2-dimmension graph, the first two principle components are chosen as the $x$ and $y$ axis, and coordinates to represent $X_i$ can be found by solving the matrix $ Y = \vec{e}\times{X}$ with Y already known. Figure 1 is a good visualization of  summarizing 3-dimmensional data into 2 principle components:
-
-\begin{figure}
-\includegraphics[scale = 0.5]{3d_data_pca.jpg}
+\begin{figure}[!htb]
+\includegraphics[scale = 0.4]{sampleLDA}
 \centering
-\caption{Summarize 3D data into 2 principle components}
+\caption{Linear Discriminant Plot on Sample Data}
 \end{figure}
 
+\noindent To explain this dataset a little bit, response 1 through 20 are customers' ratings on features of specific brand of recorders, and response `q51\_1' through `q51\_20' are customers' ratings on importance of these features. On this graph, the dots represent customers' actual ratings while the vectors represent customers' expectations. For example, survery question`1' asks about visual appealing and the fact that the vector for `q1' is pointing into a different direction from the dot for `q1' means this product's visual performance is way off from customers' expectations.
+
+
+
+\section{Statistics Concepts Involved}
+
+% \subsection{Principal Component Analysis}
+%
+% Principal Component Analysis (PCA for the rest of the document) is a statistical technique to summarize features into algebraic combinations to capture the most correlation between the features and reponses. PCA is usually used to capture the most informations of provided features meanwhile reduce the number of features for modeling complexity.
+%
+%
+% \noindent Suppose I want to do PCA on a set of random vectors $\vec{X}$s with size equals to $p$. PCA generates a coefficient matrix $E$ with size typically smaller than the length of $\vec{X}$ (otherwise, PCA loses its goal of dimentional reduction). Let $\Sigma $ denotes as variance-covariance matrix of $\vec{X}$. Then the eigenvalues of $\Sigma$: $\lambda_1$ through $\lambda_p$. These eigenvalues are ordered so that $\lambda_1$ is the largest eigenvalue and $\lambda_p$ is the smallest. Then we also calculate the eigenvectors of $\Sigma$: $ \vec{e_1}$ through $\vec{e_p}$. It turns out the elements for these eigenvectors are the coefficients of principle components. Let the $i$th principle component denotes as $ Y_i $, we can get variance of $Y_i$ as following: $$ var(Y_i) = var(e_{i1}X_1 + ... + e_{ip}X_p) = \lambda_i$$
+% $\lambda_1$ being the biggest eigenvalue indicates that $Y_i$ captures the most variance. The proportion of variance caputured by $i$ th principle components can be calculated as $\lambda_i / \sum \lambda$. With the coefficients, the $i$th principal components can be easily calculated as following:
+% $$ Y_i  = e_{i1}X_1 + ... + e_{ip}X_p$$  \cite{pen_state_pca}
+%
+% \noindent In general, to visualize the PCA result on a 2-dimmension graph, the first two principle components are chosen as the $x$ and $y$ axis, and coordinates to represent $X_i$ can be found by solving the matrix $ Y = \vec{e}\times{X}$ with Y already known. Figure 1 is a good visualization of  summarizing 3-dimmensional data into 2 principle components:
+%
+% \begin{figure}
+% \includegraphics[scale = 0.5]{3d_data_pca.jpg}
+% \centering
+% \caption{Summarize 3D data into 2 principle components}
+% \end{figure}
+%
 
 \subsection{Linear Discriminant Analysis}
 
 Linear discriminant analysis(LDA) is a method used in statistics to find a linear combination of features that characterizes or separates two or more classes of objects or event. The idea of LDA is to find a linear combination of variables to model the difference between the classes of a particular set of variable (usually categorical variables). LDA technique is frequently used as dimensionality reduction before classifications. LDA can be visualized similar to PCA as they both generate set of linear coefficients.
 
-\noindent The idea behind LDA is to find a classification criterion and use it to minimize total error of classification. To make an example, suppose there is a dataset with two groups and k correspondant features for each group. Let  $\mu_1$ and $\mu_2$ be the esponse variable mean of the first group and second group. You can start with some apriori probabilities of $p_1$ and $p_2$ to have this equation: $\mu_0 = p_1 \times \mu_1+p_2 \times \mu_2$. In LDA, within-class $(S_w)$ and $(S_b)$ scatter are used to formulate criteria for class seperation. Within-class scatter is the expected variance of each of the classes. $S_w = \sum_i (p_i+ \Sigma_i)$ where $\Sigma_i$ is the covariance matrix for $i$th group. The between-class scatter is computed using: $S_b = \sum_i(\mu_i-\mu_0) \times (\mu_j-\mu_0)^T$. Note that $S_b$ can be thought of as the covariance of data set whose members are the mean vectors of each class. For the class independent transform, the optimizing criterion $C$ is computed as $C = S_w^{-1} \times S_b$. Once $C$ is optimized, we can apply it as the transformation matrix and obtain the linear-discriminantly transformed data. \cite{lda_theory}
+\noindent The idea behind Fisher's LDA is to find a seperate populations by find linear combinations $Y = a^TX$ which has expected value $E(Y) = a^T \times E(X|\pi_i) = a^T \times \mu_i$ for pipulation $\pi_i$ and variance $Var(Y) = a^T \times Cov(X) a = a\times \Sigma a$. The between-class scatter matrix is defined as $B_{\mu} = \sum (\mu_i-\mu_0)(\mu_i-\mu_0)^T $ where $\mu_0$ is the population mean. The optimizing criterian is the ratio between ``sum of squared distances from populations to overall mean of Y'' and ``variance of Y'', in formula: $$ \frac{S_B}{S_W} = \frac{a^T B_{\mu} a}{a^T \Sigma a} $$ It turns out the elements of $a$ which maximize $\frac{S_B}{S_W}$ are eigenvalues of $\frac{B_{\mu}}{\Sigma}$. Here is a brief outline of the proof:
+
+\noindent Suppose $e_1, e_2, ... e_s$ and $\lambda_1, \lambda_2,... \lambda_s$ are the corresponding eigenvalues for $\frac{B_{\mu}}{\Sigma}$, and $e_1, e_2, ... e_s$ are the correponding eigenvectors and scaled so that $e^t  \Sigma e = 1 $ The linear combination $a_i^T \times X$ is called the (i)th discriminant. The goal is to maximize the ratio $\frac{S_B}{S_W}$ with subject to $0=Cov(a_i^T X,a_j^T X)$By the eigendecomposition, $\Sigma = P^T A P$ where $A$ is a disgonal matrix with positive elements of $\lambda_i$. Let $A^{1/2}$ denote the isgonal matrix with element of $\sqrt{\lambda_i}$. We can easily have $\Sigma^{1/2} = P^T A^{1/2} P$ and $\Sigma^{-1/2} = P^T A^{-1/2} P$. Next, set $$u = \Sigma^{1/2}a$$ so $u^T u = a^T \Sigma a$, then the maximizing criteria $\frac{S_B}{S_W}$ can be transformed into $$ \frac{u^T \Sigma^{-1/2} B_{\mu} \Sigma^{-1/2} u }{u^T u  } $$ For $i=1$, when $e_1 \mu_ = \Sigma^{-1/2}$, $$ Var(a_1^TX) = a_1^T \Sigma a_1 = e_1^T \Sigma^{-1/2} \Sigma \Sigma^{-1/2} e_1 = e_1^T e_1 = 1$$
+For $i=1$, when $e_2 \mu_ = \Sigma^{-1/2}$, $$ Var(a_2^TX) = a_2^T \Sigma a_2 = e_2^T \Sigma^{-1/2} \Sigma \Sigma^{-1/2} e_2 = e_2^T e_2 = 1$$
+Continue in this fashion, and based on the fact $e$ is scaled so that $e^t  \Sigma e = 1 $, we can easily get: $$ \Sigma^{-1/2} B_{\mu} \Sigma^{-1/2} = \lambda e $$
+and then multiply $ \Sigma^{-1/2}$ on the left side gives $$ \Sigma^{-1} B_{\mu} (\Sigma^{-1/2} e) = \lambda((\Sigma^{-1/2} e)) $$ which indicates $$\Sigma^{-1} B_{\mu} =\frac{B_{\mu}}{\Sigma} =  \lambda$$.
 
 
-\subsection{PCA vs. LDA}
-PCA and LDA are similar in the way they both generate linear combination of variables which best explains data. LDA explicitly attempts to model the difference between the classes of data while PCA models the similarities between the classes. Here is a good visulization on difference between PCA and LDA: \\
-\begin{figure}
-\includegraphics[scale = 0.4]{pcavslda}
-\centering
-\caption{PCA vs. LDA} \cite{SR_website}
-\end{figure}
+
+% This section is commented out
+% \noindent The idea behind LDA is to find a classification criterion and use it to minimize total error of classification. To make an example, suppose there is a dataset with two groups and k correspondant features for each group. Let  $\mu_1$ and $\mu_2$ be the esponse variable mean of the first group and second group. You can start with some apriori probabilities of $p_1$ and $p_2$ to have this equation: $\mu_0 = p_1 \times \mu_1+p_2 \times \mu_2$. In LDA, within-class $(S_w)$ and $(S_b)$ scatter are used to formulate criteria for class seperation. Within-class scatter is the expected variance of each of the classes. $S_w = \sum_i (p_i+ \Sigma_i)$ where $\Sigma_i$ is the covariance matrix for $i$th group. The between-class scatter is computed using: $S_b = \sum_i(\mu_i-\mu_0) \times (\mu_j-\mu_0)^T$. Note that $S_b$ can be thought of as the covariance of data set whose members are the mean vectors of each class. For the class independent transform, the optimizing criterion $C$ is computed as $C = S_w^{-1} \times S_b$. Once $C$ is optimized, we can apply it as the transformation matrix and obtain the linear-discriminantly transformed data. \cite{lda_theory}
+
+
+% \subsection{PCA vs. LDA}
+% PCA and LDA are similar in the way they both generate linear combination of variables which best explains data. LDA explicitly attempts to model the difference between the classes of data while PCA models the similarities between the classes. Here is a good visulization on difference between PCA and LDA: \\
+% \begin{figure}
+% \includegraphics[scale = 0.4]{pcavslda}
+% \centering
+% \caption{PCA vs. LDA} \cite{SR_website}
+% \end{figure}
+
+
 
 \section{Online App on ShinyIO}
 
 \subsection{Application Details}
 
-The online PCA and LDA visualization online applications can be find \href{https://zhangruinan.shinyapps.io/shinny_myggbiplot/}{\textit{here}} and \href{https://zhangruinan.shinyapps.io/LDA_plot/}{\textit{here}}.Descriptions on the application details including: functionality, default dataset, can be find \href{https://github.com/zhangruinan/Biplot_Analysis4Smari}{\textit{here}} and \href{https://github.com/zhangruinan/LDA-Plot}{\textit{here}}.
+The online PCA and LDA visualization online applications can be find \textit{https://zhangruinan.shinyapps.io/shinny\_myggbiplot/} and \textit{https://zhangruinan.shinyapps.io/LDA\_plot/} Descriptions on the application details including: functionality, default dataset, can be find at \textit{https://github.com/zhangruinan/Biplot\_Analysis4Smari} and \textit{https://github.com/zhangruinan/LDA-Plot}. We now outline some of these details
+
+\begin{itemize}
+  \item Upload excel sheet as input
+  \item Horizontal unstacking data based on keyword matching
+  \item Visualization choice including centroids, scatters, and vectors
+\end{itemize}
 
 \subsection{Implimentation Techniques}
-To give a very brief view of how Shinny IO works, the online application is run by two major R script: server.R and ui.R. THe ui.R provides customerized user interface widgets like checkboxs or text input. The input from user interface is then passed to server.R which handles the computation and generate output. The generated output can be then passed back to UI and displayed to users on the website.
+To give a very brief view of how Shinny IO works, the online application is run by two major R scripts: server.R and ui.R. The ui.R provides customerized user interface widgets like checkboxs or text input. The input from the user interface is then passed to server.R which handles the computation and generate output. The generated output can be then passed back to UI and displayed to users on the website.
 
 
 \begin{thebibliography}{9}
